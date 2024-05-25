@@ -1,10 +1,9 @@
-import { View, Text, FlatList } from "react-native";
 import React from "react";
+import { View, FlatList } from "react-native";
+
 import { StockCard } from "../../molecules";
-import {
-  getTickerResponse,
-  tickerDetails,
-} from "@/src/models/getTickerResponse";
+import styles from "./StockList.styles";
+import { getTickerResponse } from "@/src/models/getTickerResponse";
 
 type Props = {
   data: getTickerResponse["results"];
@@ -13,17 +12,11 @@ type Props = {
 const StockList = ({ data }: Props) => {
   const renderCard = ({ item }) => <StockCard stock={item} />;
   return (
-    <View
-      style={{
-        justifyContent: "center",
-        alignSelf: "center",
-        marginHorizontal: 10,
-      }}
-    >
+    <View style={styles.container}>
       <FlatList
         data={data}
         renderItem={renderCard}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.cik}
         numColumns={2}
       />
     </View>

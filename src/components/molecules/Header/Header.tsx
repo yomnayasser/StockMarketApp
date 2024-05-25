@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Image, ImageSourcePropType } from "react-native";
 
-import { IMAGES } from "@/src/assets";
 import styles from "./Header.styles";
 
 type Props = {
@@ -10,7 +9,7 @@ type Props = {
 
 const Header = ({ source }: Props) => {
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="header">
       <Image source={source} style={styles.image} />
     </View>
   );

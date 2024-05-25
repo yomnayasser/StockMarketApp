@@ -12,7 +12,7 @@ type Props = {
 const StockList = ({ data }: Props) => {
   const renderCard = ({ item }) => <StockCard stock={item} />;
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="stockList">
       <FlatList
         data={data}
         renderItem={renderCard}

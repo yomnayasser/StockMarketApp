@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Header source={IMAGES.logo} />
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Text>{search}</Text>
       {isLoading || isFetching ? (
         <StockListSkeleton />

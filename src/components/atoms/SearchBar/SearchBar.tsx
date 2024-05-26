@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { SearchBar as SearchBarRN } from "@rneui/themed";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -9,7 +9,8 @@ import { setSearch } from "@/src/store/searchReducer";
 const SearchBar = () => {
   const { search } = useSelector((state: RootState) => state.search);
   const dispatch = useDispatch();
-
+  const searchRef = useRef();
+  console.log("first:>>");
   return (
     <SearchBarRN
       round

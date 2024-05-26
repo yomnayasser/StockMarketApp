@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
+import { createStyleSheet } from "react-native-unistyles";
 
-export default StyleSheet.create({
+export default createStyleSheet((theme) => ({
   container: {
-    backgroundColor: "#242638",
+    backgroundColor: theme.colors.secondaryColor,
     marginHorizontal: 10,
     marginVertical: 10,
     paddingHorizontal: 15,
@@ -15,4 +15,4 @@ export default StyleSheet.create({
     textAlign: "center",
     paddingVertical: 10,
   },
-});
+}));

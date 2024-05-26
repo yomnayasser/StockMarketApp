@@ -1,9 +1,12 @@
 import { ImageSourcePropType } from "react-native";
 
-type images = {
-  [key: string]: ImageSourcePropType;
+type arrayString = {
+  [key: string]: string;
 };
 
-export const IMAGES: images = {
+export const IMAGES: arrayString = {
   logo: require("./images/Logo.webp"),
 };
+
+export * from "./styles/themes";
+export { breakpoints } from "./styles/breakpoints";

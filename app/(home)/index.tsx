@@ -20,12 +20,17 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Header source={IMAGES.logo} />
-      {/* <SearchBar /> */}
-      <Text>{search}</Text>
+      <SearchBar />
       {isLoading || isFetching ? (
         <StockListSkeleton />
       ) : (
-        <StockList data={data?.results} />
+        <>
+          {data?.results.length === 0 ? (
+            <Text style={styles.text}>No Stocks Available</Text>
+          ) : (
+            <StockList data={data?.results} />
+          )}
+        </>
       )}
     </View>
   );

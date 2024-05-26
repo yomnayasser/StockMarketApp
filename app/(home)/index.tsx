@@ -1,39 +1,31 @@
 import React, { useEffect } from "react";
 import { Text, View } from "react-native";
-import { useSelector } from "react-redux";
-
 import styles from "./styles";
 import { IMAGES } from "@/src/assets";
-import { RootState } from "@/src/store/store";
-import useFetchStocks from "@/src/hooks/useFetchStocks";
-import { Header, SearchBar, StockList } from "@/src/components";
-import StockListSkeleton from "@/src/skeletons/StockListSkeleton";
+import { useNavigation } from "@react-navigation/native";
 
-const Home = () => {
-  const { search } = useSelector((state: RootState) => state.search);
+import { Image } from "react-native";
 
-  const { data, isLoading, refetch, isFetching } = useFetchStocks(search);
+const SplashScreen = () => {
+  const navigation = useNavigation();
+
   useEffect(() => {
-    refetch(search);
-  }, [search]);
+    const timer = setTimeout(() => {
+      navigation.navigate("home");
+    }, 3000);
 
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <View style={styles.container}>
-      <Header source={IMAGES.logo} />
-      <SearchBar />
-      {isLoading || isFetching ? (
-        <StockListSkeleton />
-      ) : (
-        <>
-          {data?.results.length === 0 ? (
-            <Text style={styles.text}>No Stocks Available</Text>
-          ) : (
-            <StockList data={data?.results} />
-          )}
-        </>
-      )}
+      <View style={styles.imageContainer}>
+        <Image source={IMAGES.logo} style={styles.image} />
+      </View>
+      <View style={styles.textContainer}>
+        <Text style={styles.text}>Yomna Yasser</Text>
+      </View>
     </View>
   );
 };
 
-export default Home;
+export default SplashScreen;

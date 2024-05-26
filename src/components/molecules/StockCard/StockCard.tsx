@@ -1,16 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
-import { useStyles } from "react-native-unistyles";
+import { View, Text, useColorScheme } from "react-native";
 
-import StockCardStyle from "./StockCard.styles";
+import { StockCardStyles } from "./StockCard.styles";
 import { tickerDetails } from "@/src/models/getTickerResponse";
+import { useThemeColor } from "@/src/hooks/useThemeColor";
 
 type Props = {
   stock: tickerDetails;
 };
 
 const StockCard = ({ stock }: Props) => {
-  const { styles } = useStyles(StockCardStyle);
+  const colorScheme = useColorScheme();
+  const themeColors = useThemeColor(colorScheme);
+  const styles = StockCardStyles(themeColors.secondary);
 
   return (
     <View style={styles.container} testID="stockCard">
